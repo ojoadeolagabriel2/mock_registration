@@ -7,8 +7,8 @@ import {useExperience} from "../context/experienceContext";
 
 /**
  * Micro-app entry-point
- * @param {string} proposition venture name
- * @param {func} trackEvent analytics tracking event
+ * @param {*} proposition venture name
+ * @param {*} trackEvent analytics tracking event
  */
 const App = ({ proposition, trackEvent }) => {
     const experience = useExperience();
@@ -16,7 +16,7 @@ const App = ({ proposition, trackEvent }) => {
     return (
         <div className="container">
             <GlobalAppStyle />
-            app: {proposition}
+            app: {proposition} {experience.queryParams.locale}
             <br />
             <Address name="searchBar" label="Search" />
             <br />
