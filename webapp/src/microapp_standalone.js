@@ -7,6 +7,7 @@ import { render } from 'react-dom';
 import form from './store/reducer/form';
 import App from './containers/App';
 import flow from './store/reducer/flowReducer';
+import { ExperienceProvider } from './context/experienceContext';
 
 const QUERY_SEARCH_PARAMS = window.location.search;
 const QUERY_SEARCH_PARAMS_OBJ = {
@@ -32,6 +33,11 @@ const trackEvent = selectedData => {
     console.log(selectedData);
 };
 
+// experience
+const contract = {
+    queryParams: QUERY_SEARCH_PARAMS_OBJ
+};
+
 // setup store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({ form, flow });
@@ -40,11 +46,9 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 // render standalone app
 render(
     <Provider store={store}>
-        <App
-            proposition={PROPOSITION}
-            trackEvent={trackEvent}
-            queryParams={QUERY_SEARCH_PARAMS_OBJ}
-        />
+        <ExperienceProvider contract={contract}>
+            <App proposition={PROPOSITION} trackEvent={trackEvent} />
+        </ExperienceProvider>
     </Provider>,
     document.getElementById('root')
 );

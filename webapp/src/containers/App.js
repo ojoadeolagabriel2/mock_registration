@@ -3,25 +3,22 @@ import PropTypes from 'prop-types';
 import GlobalAppStyle from './App.style';
 
 import Address from '../components/address/address';
+import {useExperience} from "../context/experienceContext";
 
 /**
  * Micro-app entry-point
  * @param {string} proposition venture name
  * @param {func} trackEvent analytics tracking event
  */
-const App = ({ proposition, trackEvent, queryParams }) => {
-    const process = tempData => {
-        trackEvent(tempData);
-    };
+const App = ({ proposition, trackEvent }) => {
+    const experience = useExperience();
 
     return (
         <div className="container">
             <GlobalAppStyle />
-            <div onClick={() => process(1)}>
-                we are online using {proposition} <div className="badge badge-secondary">0</div>
-            </div>
+            app: {proposition}
             <br />
-            <Address name="searchBar" />
+            <Address name="searchBar" label="Search" />
             <br />
         </div>
     );
@@ -29,11 +26,7 @@ const App = ({ proposition, trackEvent, queryParams }) => {
 
 App.propTypes = {
     proposition: PropTypes.string.isRequired,
-    queryParams: PropTypes.shape({
-        locale: PropTypes.string,
-        layout: PropTypes.string.isRequired
-    }).isRequired,
-    trackEvent: PropTypes.func
+    trackEvent: PropTypes.func.isRequired
 };
 
 export default App;
