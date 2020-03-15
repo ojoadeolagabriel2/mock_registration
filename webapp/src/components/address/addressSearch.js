@@ -20,29 +20,48 @@ const AddressSearch = ({ name }) => {
 
     function processBlur(event) {
         const address = event.target.value;
-        dispatcher({
-            type: FORM_REDUCER_ACTION_TYPE.UPDATE_FIELD,
-            payload: {
-                value: event.target.value,
-                status: STATUS.UPDATED
-            }
-        });
-
-        if (address === TEST_ADDRESS) {
+        if(address.length >= 3) {
             dispatcher({
-                type: ADDRESS_SEARCH_ACTION_TYPE.SHOW_DROPDOWN,
+                type: FORM_REDUCER_ACTION_TYPE.UPDATE_FIELD,
                 payload: {
-                    visible: true
+                    value: event.target.value,
+                    status: STATUS.UPDATED
                 }
             });
+
+            if (address === TEST_ADDRESS) {
+                dispatcher({
+                    type: ADDRESS_SEARCH_ACTION_TYPE.SHOW_DROPDOWN,
+                    payload: {
+                        visible: true
+                    }
+                });
+            }
         }
     }
 
     return (
-        <div>
-            Search: <input id={name} value={field.value} onBlur={processBlur} />
+        <>
+            <br />
+            <div className="form-group">
+                <label htmlFor={name}>
+                    Enter <span className="badge badge-secondary">UK</span> postcode
+                </label>
+                <input
+                    id={name}
+                    value={field.value}
+                    onChange={processBlur}
+                    type="email"
+                    className="form-control"
+                    aria-describedby="emailHelp"
+                />
+                <small id="emailHelp" className="form-text text-muted">
+                    We will never share your postcode with anyone.
+                </small>
+            </div>
+            <br />
             {flow.visible && <div> searching... </div>}
-        </div>
+        </>
     );
 };
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import GlobalAppStyle from './App.style';
 
 import Address from '../components/address/address';
-import {useExperience} from "../context/experienceContext";
+import { useExperience } from '../context/experienceContext';
 
 /**
  * Micro-app entry-point
@@ -15,10 +15,13 @@ const App = ({ proposition, trackEvent }) => {
 
     return (
         <div className="container">
-            <br/>
-            <div className='card'>
-                <div className='card-body'>
+            <br />
+            <div className="card">
+                <div className="card-body">
                     <GlobalAppStyle />
+                    Contact & Security
+                    <br/>
+
                     app: {proposition} {experience.queryParams.locale}
                     <br />
                     <Address name="searchBar" label="Search" />

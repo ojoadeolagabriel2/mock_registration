@@ -12,6 +12,22 @@
     "test:unit": "jest src --coverage",
     "test:unit:no-coverage": "jest src"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:unit:no-coverage"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint src --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --check 'src/**/*.js' --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
