@@ -6,7 +6,7 @@ import useFetch from '../../store/hooks/useFetch';
 import { STATUS, FORM_REDUCER_ACTION_TYPE } from '../../store/reducer/form';
 import { ADDRESS_SEARCH_ACTION_TYPE } from '../../store/reducer/flowReducer';
 
-const TEST_ADDRESS = 'adeola';
+const TEST_ADDRESS = 'n165ua';
 
 const AddressSearch = ({ name }) => {
     const field = useSelector(state => state.form[name]);
@@ -14,7 +14,7 @@ const AddressSearch = ({ name }) => {
     const res = useFetch('/addresses/lookup', {});
     const dispatcher = useDispatch();
 
-    if (!res.response) {
+    if (res.isLoading) {
         return <div>Loading...</div>;
     }
 

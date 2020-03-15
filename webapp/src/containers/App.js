@@ -15,11 +15,16 @@ const App = ({ proposition, trackEvent }) => {
 
     return (
         <div className="container">
-            <GlobalAppStyle />
-            app: {proposition} {experience.queryParams.locale}
-            <br />
-            <Address name="searchBar" label="Search" />
-            <br />
+            <br/>
+            <div className='card'>
+                <div className='card-body'>
+                    <GlobalAppStyle />
+                    app: {proposition} {experience.queryParams.locale}
+                    <br />
+                    <Address name="searchBar" label="Search" />
+                    <br />
+                </div>
+            </div>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
-
+import logger from 'terminal-log'
 import form from './store/reducer/form';
 import App from './containers/App';
 import flow from './store/reducer/flowReducer';
@@ -30,7 +30,7 @@ const PROPOSITION = 'starspins';
 
 // init tracking events
 const trackEvent = selectedData => {
-    console.log(selectedData);
+    logger.info(selectedData);
 };
 
 // experience
