@@ -4,7 +4,7 @@ import AddressSearch from './addressSearch';
 const Address = () => {
     return (
         <>
-            <AddressSearch name="address_search" />
+            <AddressSearch name="addressSearch" />
         </>
     );
 };

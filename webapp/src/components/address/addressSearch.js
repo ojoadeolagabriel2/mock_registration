@@ -6,6 +6,7 @@ import useFetch from '../../store/hooks/useFetch';
 import { STATUS, FORM_REDUCER_ACTION_TYPE } from '../../store/reducer/form';
 import { ADDRESS_SEARCH_ACTION_TYPE } from '../../store/reducer/flowReducer';
 
+const CHECK_LENGTH = 3;
 const TEST_ADDRESS = 'n165ua';
 
 const AddressSearch = ({ name }) => {
@@ -18,9 +19,9 @@ const AddressSearch = ({ name }) => {
         return <div>Loading...</div>;
     }
 
-    function processBlur(event) {
+    function processChange(event) {
         const address = event.target.value;
-        if(address.length >= 3) {
+        if(address.length >= CHECK_LENGTH && address === TEST_ADDRESS) {
             dispatcher({
                 type: FORM_REDUCER_ACTION_TYPE.UPDATE_FIELD,
                 payload: {
@@ -50,7 +51,7 @@ const AddressSearch = ({ name }) => {
                 <input
                     id={name}
                     value={field.value}
-                    onChange={processBlur}
+                    onChange={processChange}
                     type="email"
                     className="form-control"
                     aria-describedby="emailHelp"
