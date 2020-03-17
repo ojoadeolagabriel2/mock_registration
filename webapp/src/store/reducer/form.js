@@ -15,7 +15,7 @@ export const defaultFields = {
     title: { status: STATUS.NEW },
     firstName: { status: STATUS.NEW },
     middleName: { status: STATUS.NEW },
-    addressSearch: { status: STATUS.NEW },
+    addressSearch: { status: STATUS.NEW, color: 'RED' },
     street1: { status: STATUS.NEW },
     street2: { status: STATUS.NEW },
     town: { status: STATUS.NEW }

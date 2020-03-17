@@ -25,6 +25,7 @@ const AddressSearch = ({ name }) => {
             dispatcher({
                 type: FORM_REDUCER_ACTION_TYPE.UPDATE_FIELD,
                 payload: {
+                    fieldName: name,
                     value: event.target.value,
                     status: STATUS.UPDATED
                 }
