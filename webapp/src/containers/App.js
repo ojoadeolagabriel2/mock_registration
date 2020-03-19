@@ -20,8 +20,7 @@ const App = ({ proposition, trackEvent }) => {
                 <div className="card-body">
                     <GlobalAppStyle />
                     Contact & Security
-                    <br/>
-
+                    <br />
                     app: {proposition} {experience.queryParams.locale}
                     <br />
                     <Address name="searchBar" label="Search" />

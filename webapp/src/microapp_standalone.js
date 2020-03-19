@@ -42,7 +42,7 @@ const contract = {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({ form, flow });
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
-
+z;
 // render standalone app
 render(
     <Provider store={store}>

@@ -14,6 +14,7 @@ const useFetch = (url, options) => {
                 setResponse(json);
                 setIsLoading(false);
             } catch (err) {
+                setIsLoading(false);
                 setError(err);
             }
         };
