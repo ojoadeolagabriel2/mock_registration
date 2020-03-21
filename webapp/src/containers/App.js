@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
-import logger from 'terminal-log';
 import GlobalAppStyle from './App.style';
 
 import Address from '../components/address/address';
 import { useExperience } from '../context/experienceContext';
-import usePost from '../store/hooks/usePost';
 
 /**
  * Micro-app entry-point
@@ -13,21 +11,6 @@ import usePost from '../store/hooks/usePost';
  */
 const App = ({ proposition }) => {
     const experience = useExperience();
-
-    usePost({
-        url: 'https://www.google.com',
-        payload: {
-            id: 1
-        },
-        config: {
-            headers: {
-                'X-PAYLOAD': '10001'
-            }
-        },
-        onComplete: result => {
-            logger.info(result);
-        }
-    });
 
     return (
         <div className="container">

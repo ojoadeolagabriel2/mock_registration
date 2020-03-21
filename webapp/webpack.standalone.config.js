@@ -25,8 +25,7 @@ module.exports = {
   output: {
     path: `${__dirname}${PUBLIC_PATH}`,
     publicPath: './',
-    filename: 'widget.js',
-    libraryTarget: 'umd'
+    filename: 'bundle.js'
   },
   optimization: {
     minimize: true,

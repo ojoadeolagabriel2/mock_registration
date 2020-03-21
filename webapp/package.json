@@ -9,6 +9,7 @@
     "build:microapp": "webpack --config ./webpack.microapp.config",
     "build:standalone": "webpack --config ./webpack.standalone.config",
     "deploy": "gh-pages -d /public",
+    "host:local": "npm run build:microapp && http-server",
     "production": "npm run version:update-patch && npm run build:microapp && npm run build:standalone && npm publish",
     "production-install": "npm run production && npm install",
     "transpile": "babel src -d dist --copy-files",
@@ -99,6 +100,7 @@
   "dependencies": {
     "appversion": "^1.7.1",
     "axios": "^0.19.2",
+    "http-server": "^0.12.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "16.8.1",
