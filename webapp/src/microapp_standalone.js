@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
-import logger from 'terminal-log';
 import form from './store/reducer/form';
 import App from './containers/App';
 import flow from './store/reducer/flowReducer';
@@ -28,11 +27,6 @@ if (QUERY_SEARCH_PARAMS) {
 // default venture name
 const PROPOSITION = 'starspins';
 
-// init tracking events
-const trackEvent = selectedData => {
-    logger.info(selectedData);
-};
-
 // experience
 const contract = {
     queryParams: QUERY_SEARCH_PARAMS_OBJ
@@ -47,7 +41,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 render(
     <Provider store={store}>
         <ExperienceProvider contract={contract}>
-            <App proposition={PROPOSITION} trackEvent={trackEvent} />
+            <App proposition={PROPOSITION} />
         </ExperienceProvider>
     </Provider>,
     document.getElementById('root')

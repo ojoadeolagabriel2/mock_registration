@@ -21,7 +21,7 @@ const AddressSearch = ({ name }) => {
 
     function processChange(event) {
         const address = event.target.value;
-        if(address.length >= CHECK_LENGTH && address === TEST_ADDRESS) {
+        if (address.length >= CHECK_LENGTH && address === TEST_ADDRESS) {
             dispatcher({
                 type: FORM_REDUCER_ACTION_TYPE.UPDATE_FIELD,
                 payload: {
