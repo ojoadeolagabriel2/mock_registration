@@ -1,0 +1,14 @@
+public
+.babelrc
+.eslintignore
+.eslintrc.json
+.prettierrc.json
+jest.config.js
+setupEnzyme.js
+webpack.dev.config.js
+webpack.microapp.config.js
+webpack.standalone.config.js
+docker
+resources
+src
+templates
