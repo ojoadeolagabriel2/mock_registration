@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import useFetch from '../../store/hooks/useFetch';
+import Button from "../../elements/Button";
 import { STATUS, FORM_REDUCER_ACTION_TYPE } from '../../store/reducer/form';
 import { ADDRESS_SEARCH_ACTION_TYPE } from '../../store/reducer/flowReducer';
 
@@ -60,6 +61,7 @@ const AddressSearch = ({ name }) => {
                 <small id="emailHelp" className="form-text text-muted">
                     We will never share your postcode with anyone.
                 </small>
+                <Button> Submit</Button>
             </div>
             <br />
             {flow.visible && <div> searching... </div>}
