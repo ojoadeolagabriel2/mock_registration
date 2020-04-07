@@ -1,12 +1,12 @@
 package service.filter;
 
-import org.apache.commons.io.IOUtils;
-
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import java.io.*;
+
+import static org.apache.commons.io.IOUtils.copy;
 
 public class CustomHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
@@ -15,7 +15,7 @@ public class CustomHttpServletRequestWrapper extends HttpServletRequestWrapper {
     public CustomHttpServletRequestWrapper(HttpServletRequest request) {
         super(request);
         try {
-            IOUtils.copy(request.getInputStream(), outputStream);
+            copy(request.getInputStream(), outputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }

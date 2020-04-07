@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Button = styled.div`
+const ButtonStyled = styled.div`
     user-select: none;
     transition: background 120ms ease-in 0s;
     cursor: pointer;
@@ -28,4 +28,4 @@ const Button = styled.div`
 `;
 
 
-export default Button
+export default ButtonStyled

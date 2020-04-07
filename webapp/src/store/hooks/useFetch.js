@@ -17,7 +17,11 @@ const useFetch = (url, options) => {
                 setError(err);
             }
         };
-        fetchData();
+
+        fetchData().then(() => {
+            // eslint-disable-next-line no-console
+            console.log('do nothing')
+        });
     }, []);
     return { response, error, isLoading };
 };
