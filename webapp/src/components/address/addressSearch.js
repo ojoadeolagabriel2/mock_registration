@@ -13,7 +13,7 @@ const TEST_ADDRESS = 'n165ua';
 const AddressSearch = ({ name }) => {
     const field = useSelector(state => state.form[name]);
     const flow = useSelector(state => state.flow);
-    const res = useFetch('/addresses/lookup', {});
+    const res = useFetch('/address-lookup/address', {});
     const dispatcher = useDispatch();
 
     if (res.isLoading) {

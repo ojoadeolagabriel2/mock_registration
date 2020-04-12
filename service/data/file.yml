@@ -1,0 +1,8 @@
+scount:
+  desc: |
+    wowzers circonus_annotation
+    memset_dns_reload
+    users
+  a_sequence:
+    - data_pipeline: {'key' : 'value'}
+    - data_pipeline_2
