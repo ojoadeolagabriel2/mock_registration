@@ -13,7 +13,7 @@ if (process.env.mocked_bff === 'true') {
     ncp(`${__dirname}/resources`, `${__dirname}/public`);
 }
 
-const APP_PORT = process.env.PORT || 8700
+const APP_PORT = process.env.PORT || 12345
 
 module.exports = {
     mode: 'development',
@@ -36,7 +36,7 @@ module.exports = {
     ],
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        port: 12345,
+        port: APP_PORT,
         hot: true,
         historyApiFallback: true,
         clientLogLevel: 'debug',

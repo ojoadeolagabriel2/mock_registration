@@ -1,5 +1,89 @@
 ---
+- hosts: localhost
+  gather_facts: false
+  vars:
+    myList: [1, 9, 6]
+    world: "Adeola Ojo"
+    project_path: ~/ans_path
+    repo_path: ~/ans_path/repo
+    version: "{{ lookup('env','APP_VERSION')|default('1.0.0') }}"
+    my_todo_repo: https://github.com/ojoadeolagabriel2/mytodo.git
 
-- hosts: all
+  roles:
+    - { role: chusiang.helloworld }
+
   tasks:
-    - shell: echo 'hello world'
+    - debug:
+        msg: 'Starting reconditioning'
+
+    - import_tasks: tasks/child-playbook.yml
+      vars: 
+        app_name: blanka
+      tags: 
+        - child_test
+        - prep
+
+    - name: check dir exists.
+      stat:
+        path: '{{project_path}}'
+      register: dir_details
+      tags:
+        - prep
+
+    - name: delete base folders if exist
+      shell: |
+        '{% if dir_details.stat.isdir %} 
+          (chdir {{repo_path}} ls -al)
+          echo {{ to_uuid() }}
+          rm -rf {{ repo_path }}
+        {% endif %}'
+      tags:
+        - prep
+
+    - name: set some variable
+      set_fact:
+        release_path: "{{ project_path }}/releases/{{ lookup('pipe','date +%Y%m%d%H%M%S') }}"
+        current_path: "{{ project_path }}/current"
+      register: playbook_variables
+      tags:
+        - variables
+    
+    - debug: 
+        var: dir_details
+
+    - name: create new folder
+      file: dest={{ release_path }}
+        mode=0755
+        recurse=yes
+        state=directory
+      register: create_new_folder
+      when: "{{world}} == 'Adeola OjoX'"
+    
+    - name: print if greater than 5
+      command: echo '{{ item }} was found'
+      loop: "{{ myList|default([]) }}"
+      when: item > 5
+      register: printer_reg
+
+    - debug: 
+        var: printer_reg.results[2].end
+
+    - name: clone the repository
+      git:
+        repo: "{{ my_todo_repo }}"
+        dest: "{{ repo_path }}"
+        version: master
+
+    - name: print project path
+      shell: |
+        echo '{{ (999999999999999999999 | random | string + (lookup('pipe', 'date +%s%N'))) | to_uuid() }}'
+        echo '{{ (999999999999999999999 | random | string + (lookup('pipe', 'date +%s%N'))) | to_uuid() }}'
+
+    - name: print project path 2
+      shell: echo '{{ (999999999999999999999 | random | string + (lookup('pipe', 'date +%s%N'))) | to_uuid() }}'
+
+    - name: update npm
+      npm: path={{ release_path }}
+
+    - debug:
+        msg: 'Ending reprovisioning'
